@@ -86,6 +86,7 @@ table.PutValue(0, 0, "Hello world")
 table.PutValuesAtRow(1, "Hello", "World")
 
 table.GetValue(0, 0) // "Hello world"
+table.GetStringValue(0, 0) // "Hello world"
 table.GetValuesAtRow(1) // "Hello", "World"
 ```
 

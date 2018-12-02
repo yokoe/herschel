@@ -1,6 +1,8 @@
 # Herschel
 The Google Spreadsheet Writing / Reading Library for Golang.
 
+[![Maintainability](https://api.codeclimate.com/v1/badges/e9e5c23863d9b7cd7a69/maintainability)](https://codeclimate.com/github/yokoe/herschel/maintainability)
+
 ## Features
 * Read table from Google Spreadsheet
 * Write table to Google Spreadsheet

@@ -34,10 +34,11 @@ func TestTable_GetStringValue(t *testing.T) {
 }
 
 func TestTable_GetIntValue(t *testing.T) {
-	table := NewTable(1, 4)
+	table := NewTable(1, 5)
 	table.PutValue(0, 0, 123)
 	table.PutValue(0, 1, 456)
 	table.PutValue(0, 2, "Hello")
+	table.PutValue(0, 4, "12345")
 
 	type args struct {
 		row int
@@ -52,6 +53,7 @@ func TestTable_GetIntValue(t *testing.T) {
 		{"IntAtSecondCell", args{0, 1}, 456},
 		{"CellWithStringValue", args{0, 2}, 0},
 		{"EmptyCell", args{0, 3}, 0},
+		{"ParsableStringValue", args{0, 4}, 12345},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
@@ -63,10 +65,11 @@ func TestTable_GetIntValue(t *testing.T) {
 }
 
 func TestTable_GetInt64Value(t *testing.T) {
-	table := NewTable(1, 4)
+	table := NewTable(1, 5)
 	table.PutValue(0, 0, int64(9223372036854775806))
 	table.PutValue(0, 1, 456)
 	table.PutValue(0, 2, "Hello")
+	table.PutValue(0, 4, "12345")
 
 	type args struct {
 		row int
@@ -81,6 +84,7 @@ func TestTable_GetInt64Value(t *testing.T) {
 		{"IntAtSecondCell", args{0, 1}, 456},
 		{"CellWithStringValue", args{0, 2}, 0},
 		{"EmptyCell", args{0, 3}, 0},
+		{"ParsableStringValue", args{0, 4}, 12345},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {

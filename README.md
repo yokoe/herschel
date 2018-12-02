@@ -141,3 +141,6 @@ To run all testcases, please set service account credentials json file to `SPREA
 ```
 SPREADSHEET_CREDENTIAL_FILE=/path/to/credentials.json go test . -v -cover
 ```
+
+## Links
+* [Go言語で、Google Spreadsheet上のデータを取得する(Japanese)](https://qiita.com/croquette0212/items/5a3b2bd52a017d875d91)

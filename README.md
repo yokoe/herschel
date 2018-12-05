@@ -81,6 +81,16 @@ if err != nil {
 // table.GetValue(0, 0)
 ```
 
+### Export table as CSV
+```
+buf := bytes.NewBufferString("")
+if err := table.ToCSV(buf); err != nil {
+	// Error handling
+}
+
+csvStr = buf.String()
+```
+
 ### Table manipulation
 #### Get / Put
 ```

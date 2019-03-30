@@ -181,3 +181,17 @@ func (t *Table) clearCell(row int, col int) {
 	delete(t.numberFormats[row], col)
 	delete(t.numberFormatTypes[row], col)
 }
+
+// ToMap creates map from table. First column value as key, second column value as value.
+func (t *Table) ToMap() map[string]interface{} {
+	m := map[string]interface{}{}
+	if t.cols >= 2 {
+		for row := 0; row < t.rows; row++ {
+			k := t.GetStringValue(row, 0)
+			if len(k) > 0 {
+				m[k] = t.GetValue(row, 1)
+			}
+		}
+	}
+	return m
+}

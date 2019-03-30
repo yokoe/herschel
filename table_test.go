@@ -230,3 +230,18 @@ func describeTableCells(table *Table) string {
 	}
 	return strings.Join(rows, "\n")
 }
+
+func TestTableToMapConversion(t *testing.T) {
+	tb := NewTable(3, 2)
+	tb.PutValuesAtRow(0, "foo", "value")
+	tb.PutValuesAtRow(1, "bar", 123)
+	tb.PutValuesAtRow(2, "foo", "overwritten")
+
+	m := tb.ToMap()
+	if m["foo"] != "overwritten" {
+		t.Errorf("m[foo] = %v, want 'overwritten'", m["foo"])
+	}
+	if m["bar"] != 123 {
+		t.Errorf("m[bar] = %v, want 123", m["bar"])
+	}
+}

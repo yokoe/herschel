@@ -81,6 +81,15 @@ if err != nil {
 // table.GetValue(0, 0)
 ```
 
+### Convert table to map
+Key comes from first column value, value from second column value.
+
+```
+m := table.ToMap()
+
+log.Printf("key values: %+v\n", m)
+```
+
 ### Export table as CSV
 ```
 buf := bytes.NewBufferString("")

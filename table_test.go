@@ -245,3 +245,18 @@ func TestTableToMapConversion(t *testing.T) {
 		t.Errorf("m[bar] = %v, want 123", m["bar"])
 	}
 }
+
+func TestTableToMapSliceConversion(t *testing.T) {
+	tb := NewTable(3, 3)
+	tb.PutValuesAtRow(0, "first_name", "last_name", "city")
+	tb.PutValuesAtRow(1, "John", "Smith", "London")
+	tb.PutValuesAtRow(2, "Peter", "Brown", "New York")
+
+	rows := tb.ToMapSlice()
+	if rows[0]["first_name"] != "John" {
+		t.Errorf("row[0][first_name] = %v, want John", rows[0]["first_name"])
+	}
+	if rows[1]["last_name"] != "Brown" {
+		t.Errorf("row[1][last_name] = %v, want Brown", rows[1]["last_name"])
+	}
+}

@@ -195,3 +195,26 @@ func (t *Table) ToMap() map[string]interface{} {
 	}
 	return m
 }
+
+// ToMapSlice returns a slice of map from table values.
+func (t *Table) ToMapSlice() []map[string]interface{} {
+	if t.rows <= 1 || t.cols == 0 {
+		return nil
+	}
+
+	header := []string{}
+	for col := 0; col < t.cols; col++ {
+		header = append(header, t.GetStringValue(0, col))
+	}
+
+	objects := []map[string]interface{}{}
+	for row := 1; row < t.rows; row++ {
+		m := map[string]interface{}{}
+		for col := 0; col < t.cols; col++ {
+			m[header[col]] = t.GetValue(row, col)
+		}
+		objects = append(objects, m)
+	}
+
+	return objects
+}

@@ -36,4 +36,15 @@ func TestReading(t *testing.T) {
 		}
 	})
 
+	t.Run("ListingSheets", func(t *testing.T) {
+		titles, err := c.SheetTitles(spreadsheetID)
+		if err != nil {
+			t.Fatal(err)
+		}
+		if len(titles) != 2 {
+			t.Log(titles)
+			t.Errorf("Expect 2 sheet titles, got %d", len(titles))
+		}
+	})
+
 }

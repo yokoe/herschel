@@ -33,3 +33,8 @@ func (client *Client) ReadTable(spreadsheetID string, sheetTitle string) (*Table
 	}
 	return t, nil
 }
+
+// SheetTitles returns a slice of sheet titles.
+func (client Client) SheetTitles(spreadsheetID string) ([]string, error) {
+	return getSheetTitles(client, spreadsheetID)
+}

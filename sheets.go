@@ -4,6 +4,20 @@ import (
 	sheets "google.golang.org/api/sheets/v4"
 )
 
+func getSheetTitles(client Client, spreadsheetID string) ([]string, error) {
+	spreadsheet, err := client.service.Spreadsheets.Get(spreadsheetID).Do()
+	if err != nil {
+		return nil, err
+	}
+
+	sheetTitles := []string{}
+
+	for _, sheet := range spreadsheet.Sheets {
+		sheetTitles = append(sheetTitles, sheet.Properties.Title)
+	}
+	return sheetTitles, nil
+}
+
 func getSheetID(client Client, spreadsheetID string, sheetName string) (int64, bool, error) {
 	spreadsheet, err := client.service.Spreadsheets.Get(spreadsheetID).Do()
 	if err != nil {

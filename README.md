@@ -139,6 +139,8 @@ table.RemoveRowAtIndex(3)
 client.AddSheet("spreadsheetID", "NewSheet")
 client.DeleteSheet("spreadsheetID", "NewSheet")
 client.RecreateSheet("spreadsheetID", "NewSheet")
+
+titles, err := client.SheetTitles("spreadsheetID")
 ```
 
 ### Worksheet manipulation
